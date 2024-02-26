@@ -9,7 +9,6 @@ import AccountDropdown from './account-dropdown'
 import AppNav from './app-nav'
 import DatasetNav from './dataset-nav'
 import EnvNav from './env-nav'
-import ExploreNav from './explore-nav'
 import ToolsNav from './tools-nav'
 import GithubStar from './github-star'
 import { WorkspaceProvider } from '@/context/workspace-context'
@@ -69,7 +68,7 @@ const Header = () => {
       )}
       {!isMobile && (
         <div className='flex items-center'>
-          <ExploreNav className={navClassName} />
+          {/* <ExploreNav className={navClassName} /> */}
           <AppNav />
           {isCurrentWorkspaceManager && <DatasetNav />}
           <ToolsNav className={navClassName} />
@@ -96,7 +95,7 @@ const Header = () => {
       </div>
       {(isMobile && isShowNavMenu) && (
         <div className='w-full flex flex-col p-2 gap-y-1'>
-          <ExploreNav className={navClassName} />
+          {/* <ExploreNav className={navClassName} /> */}
           <AppNav />
           {isCurrentWorkspaceManager && <DatasetNav />}
           <ToolsNav className={navClassName} />
