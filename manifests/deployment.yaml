@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: My-Buddy
+  labels:
+    app: My-Buddy
+  namespace: mybuddy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: My-Buddy
+  template:
+    metadata:
+      labels:
+        app: My-Buddy
+    spec:
+      containers:
+        - name: My-Buddy
+          image: mybuddy.azurecr.io/image-workflow-1708943281256:latest
+          ports:
+            - containerPort: 8000
