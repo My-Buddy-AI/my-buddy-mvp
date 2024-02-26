@@ -1,22 +1,53 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: My-Buddy
+  annotations:
+    descriptions: web server
   labels:
-    app: My-Buddy
+    app.kubernetes.io/instance: mybuddy
+    app.kubernetes.io/name: mybuddy
+    app.kubernetes.io/version: 0.5.6
+    component: web
+  name: mybuddy-dify-web
   namespace: mybuddy
 spec:
+  progressDeadlineSeconds: 600
   replicas: 1
+  revisionHistoryLimit: 10
   selector:
     matchLabels:
-      app: My-Buddy
+      app.kubernetes.io/instance: mybuddy
+      app.kubernetes.io/name: dify
+      component: web
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
   template:
     metadata:
       labels:
-        app: My-Buddy
+        app.kubernetes.io/instance: mybuddy
+        app.kubernetes.io/name: dify
+        component: web
     spec:
       containers:
-        - name: My-Buddy
-          image: mybuddy.azurecr.io/image-workflow-1708943281256:latest
-          ports:
-            - containerPort: 8000
+      - env:
+        - name: EDITION
+          value: SELF_HOSTED
+        envFrom:
+        - configMapRef:
+            name: mybuddy-dify-web
+        image: mybuddy.azurecr.io/mybuddy-web:latest
+        imagePullPolicy: IfNotPresent
+        name: web
+        ports:
+        - containerPort: 3000
+          name: web
+          protocol: TCP
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      terminationGracePeriodSeconds: 30
