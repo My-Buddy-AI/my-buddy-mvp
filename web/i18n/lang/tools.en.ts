@@ -7,9 +7,9 @@ const translation = {
     custom: 'Custom',
   },
   contribute: {
-    line1: 'I\'m interested in ',
-    line2: 'contributing tools to Dify.',
-    viewGuide: 'View the guide',
+    line1: '',
+    line2: '',
+    viewGuide: '',
   },
   author: 'By',
   auth: {
