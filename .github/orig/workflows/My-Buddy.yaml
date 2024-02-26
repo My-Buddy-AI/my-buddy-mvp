@@ -12,6 +12,7 @@ env:
     CONTAINER_NAME: mybuddy-web
     DEPLOYMENT_MANIFEST_PATH: |
         manifests/deployment.yaml
+        manifests/service.yaml
 jobs:
     buildImage:
         permissions:
