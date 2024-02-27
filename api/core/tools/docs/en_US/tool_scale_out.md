@@ -72,7 +72,7 @@ Still taking GoogleSearch as an example, we need to create a `tools` module unde
 ```yaml
 identity: # Basic information of the tool
   name: google_search # Tool name, unique, no duplication with other tools
-  author: Dify # Author
+  author: My-Buddy.AI # Author
   label: # Label for frontend display
     en_US: GoogleSearch # English label
     zh_Hans: 谷歌搜索 # Chinese label
