@@ -136,7 +136,7 @@ const ToolList: FC<Props> = ({
       </div>
       <div className={cn(isInToolsPage ? 'px-6' : 'px-4', 'grow h-0 pt-2 overflow-y-auto')}>
         {/* list */}
-        <div className={cn(isInToolsPage ? 'grid-cols-3 gap-4' : 'grid-cols-1 gap-2', 'grid')}>
+        <div className={cn(isInToolsPage ? 'sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4' : 'grid-cols-1 gap-2', 'grid')}>
           {list.map(item => (
             <Item
               key={item.name}

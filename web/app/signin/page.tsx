@@ -22,32 +22,37 @@ gtag('js', new Date());
 gtag('config', 'AW-11217955271"');
         `,
             }}
-          >
-          </Script>
+          ></Script>
         </>
       )}
-      <div className={cn(
-        style.background,
-        'flex w-full min-h-screen',
-        'sm:p-4 lg:p-8',
-        'gap-x-20',
-        'justify-center lg:justify-start',
-      )}>
-        <div className={
-          cn(
-            'flex w-full flex-col bg-white shadow rounded-2xl shrink-0',
+      <div
+        className={cn(
+          style.background,
+          'flex w-full min-h-screen',
+          'justify-center lg:justify-start',
+        )}
+      >
+        <div
+          className={cn(
+            style.wrapper,
+            'lg:flex w-full lg:w-1/2 login_img_section justify-around items-center',
+          )}
+        >
+        </div>
+        <div
+          className={cn(
+            style.bgWrapper,
+            'flex-col flex w-full lg:w-1/2 bg-white shadow shrink-0',
             'space-between',
-          )
-        }>
+          )}
+        >
           <Header />
           <Forms />
-          <div className='px-8 py-6 text-sm font-normal text-gray-500'>
+          <div className="px-8 py-6 text-sm text-center font-normal text-gray-500">
             © {new Date().getFullYear()} My-Buddy.AI, Ltd. All rights reserved.
           </div>
         </div>
-
       </div>
-
     </>
   )
 }

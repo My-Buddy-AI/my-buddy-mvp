@@ -140,8 +140,8 @@ const NormalForm = () => {
   return (
     <>
       <div className="w-full mx-auto">
-        <h2 className="text-[32px] font-bold text-gray-900">{t('login.pageTitle')}</h2>
-        <p className='mt-1 text-sm text-gray-600'>{t('login.welcome')}</p>
+        <h2 className="text-[32px] font-bold text-gray-900 text-center">{t('login.pageTitle')}</h2>
+        <p className='mt-1 text-sm text-gray-600 text-center'>{t('login.welcome')}</p>
       </div>
 
       <div className="w-full mx-auto mt-8">
@@ -257,7 +257,7 @@ const NormalForm = () => {
                         onClick={() => setShowPassword(!showPassword)}
                         className="text-gray-400 hover:text-gray-500 focus:outline-none focus:text-gray-500"
                       >
-                        {showPassword ? '👀' : '😝'}
+                        {showPassword}
                       </button>
                     </div>
                   </div>
