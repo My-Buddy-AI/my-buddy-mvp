@@ -78,8 +78,8 @@ const OneMoreStep = () => {
   return (
     <>
       <div className="w-full mx-auto">
-        <h2 className="text-[32px] font-bold text-gray-900">{t('login.oneMoreStep')}</h2>
-        <p className='mt-1 text-sm text-gray-600 '>{t('login.createSample')}</p>
+        <h2 className="text-[32px] font-bold text-gray-900 text-center">{t('login.oneMoreStep')}</h2>
+        <p className='mt-1 text-sm text-gray-600 text-center'>{t('login.createSample')}</p>
       </div>
 
       <div className="w-full mx-auto mt-6">

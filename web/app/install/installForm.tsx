@@ -88,9 +88,9 @@ const InstallForm = () => {
       ? <Loading />
       : <>
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
-          <h2 className="text-[32px] font-bold text-gray-900">{t('login.setAdminAccount')}</h2>
+          <h2 className="text-[32px] font-bold text-gray-900 text-center">{t('login.setAdminAccount')}</h2>
           <p className='
-          mt-1 text-sm text-gray-600
+          mt-1 text-sm text-gray-600 text-center
         '>{t('login.setAdminAccountDesc')}</p>
         </div>
 
@@ -148,7 +148,7 @@ const InstallForm = () => {
                       onClick={() => setShowPassword(!showPassword)}
                       className="text-gray-400 hover:text-gray-500 focus:outline-none focus:text-gray-500"
                     >
-                      {showPassword ? '👀' : '😝'}
+                      {showPassword}
                     </button>
                   </div>
                 </div>

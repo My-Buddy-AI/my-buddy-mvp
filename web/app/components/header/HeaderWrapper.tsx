@@ -15,7 +15,7 @@ const HeaderWrapper = ({
 
   return (
     <div className={classNames(
-      'sticky top-0 left-0 right-0 z-20 flex flex-col bg-gray-100 grow-0 shrink-0 basis-auto min-h-[56px]',
+      'sticky pt-3 pb-3 top-0 left-0 right-0 z-20 flex flex-col bg-white grow-0 shrink-0 basis-auto min-h-[56px]',
       s.header,
       isBordered ? 'border-b border-gray-200' : '',
     )}
