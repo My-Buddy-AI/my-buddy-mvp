@@ -12,6 +12,7 @@ from models.model import App
 @shared_task(queue='whatsapp')
 def send_whatsapp_response(data: dict, end_user, sender_id):
     try:
+        # Get app model
         app_model = db.session.query(App).filter(App.id == UUID("2813cc15-8da8-4911-8a91-5178f4028f79")).first()
         response = CompletionService.completion(
             app_model=app_model,
