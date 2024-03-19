@@ -20,7 +20,7 @@ def send_whatsapp_response(data: dict, end_user, sender_id):
             invoke_from=InvokeFrom.WEB_APP,
             streaming=False
         )
-        token = "EAAFJMpu0YYYBO14xH7CE2ZCeQSm0D9bnX1pI79aF15cCIJNYERuwh6ZAKKIRsxbZAXAZAs6XpDIw8fafiVZBL9zmIHbNQK6YInkDFoTZCyEVuiQzZB3nYTmaZA4ZAtZA44lZBOqKxRXGcV41IodyLK16kPXEnMMIec7GarxewP7115LEO0GdoieVKZCmBgdIvDd100F2dLpB9ve0Rqioiu5fXLiJuQuZBAZAaPPANlbrsZD"
+        token = "EAAFJMpu0YYYBO4Hd5Amc2dHSCSqQfBHuZCBiQlMZA15mxl2ZAQ97FbuYseuZAUUe4RUrCKgy29kPE84ZCZBRkqltmZCF2Dc0XTFkUIzZAVC61XvdQDSx5VyabZBfKSCSpAYsylmtUq8LZC67CczI0ZAGoVs7Pa2iRsQlVC7BD8UOXTAkp2zNzDM5NP6HMzi8xZBqWngMikqIl0481ODHfQbnqxf1W6eLla66cuiI8wwZD"
         whatsapp_app = whatsapp_service(phone_number_id="159045903960749", bearer_token=token)
         response = compact_response(response)
         response_data = response.json()
