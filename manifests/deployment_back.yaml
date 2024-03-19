@@ -37,7 +37,7 @@ spec:
         envFrom:
         - configMapRef:
             name: mybuddy-dify-api
-        image: langgenius/dify-api:0.5.6
+        image: mybuddy.azurecr.io/mybuddy-api:latest
         imagePullPolicy: IfNotPresent
         name: api
         ports:
