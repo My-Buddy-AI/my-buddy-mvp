@@ -5,7 +5,7 @@
 1. Start the docker-compose stack
 
    The backend require some middleware, including PostgreSQL, Redis, and Weaviate, which can be started together using `docker-compose`.
-   
+
    ```bash
    cd ../docker
    docker-compose -f docker-compose.middleware.yaml -p dify up -d
