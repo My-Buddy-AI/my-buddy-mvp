@@ -36,7 +36,7 @@ spec:
       - envFrom:
         - configMapRef:
             name: mybuddy-dify-worker
-        image: langgenius/dify-api:0.5.6
+        image: mybuddy.azurecr.io/mybuddy-api:latest
         imagePullPolicy: IfNotPresent
         name: worker
         resources: {}
