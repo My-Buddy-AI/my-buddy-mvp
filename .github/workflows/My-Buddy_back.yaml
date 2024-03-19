@@ -1,19 +1,20 @@
-name: My-Buddy
+name: My-Buddy-back
 "on":
     push:
         branches:
             - main
         paths:
-        - web
+        - api
     workflow_dispatch: {}
 env:
     ACR_RESOURCE_GROUP: mybuddy
     AZURE_CONTAINER_REGISTRY: mybuddy
     CLUSTER_NAME: mybuddy
     CLUSTER_RESOURCE_GROUP: mybuddy
-    CONTAINER_NAME: mybuddy-web
+    CONTAINER_NAME: mybuddy-api
     DEPLOYMENT_MANIFEST_PATH: |
-        manifests/deployment.yaml
+        manifests/deployment_back.yaml
+        manifests/deployment_worker.yaml
 jobs:
     buildImage:
         permissions:
@@ -29,7 +30,7 @@ jobs:
                 subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
                 tenant-id: ${{ secrets.AZURE_TENANT_ID }}
             - name: Build and push image to ACR
-              run: cd web ; az acr build --image ${{ env.CONTAINER_NAME }}:${{ github.sha }} --registry ${{ env.AZURE_CONTAINER_REGISTRY }} -g ${{ env.ACR_RESOURCE_GROUP }} -f Dockerfile ./
+              run: cd api ; az acr build --image ${{ env.CONTAINER_NAME }}:${{ github.sha }} --registry ${{ env.AZURE_CONTAINER_REGISTRY }} -g ${{ env.ACR_RESOURCE_GROUP }} -f Dockerfile ./
     deploy:
         permissions:
             actions: read
