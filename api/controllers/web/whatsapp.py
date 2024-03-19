@@ -51,4 +51,4 @@ class WhatasappWebhookApi(Resource):
         return {'result': 'success'}
 
 
-api.add_resource(WhatasappWebhookApi, '/apps/whatsapp/webhooks')
+api.add_resource(WhatasappWebhookApi, '/whatsapp/webhooks')
