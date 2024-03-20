@@ -13,7 +13,7 @@ from models.model import App
 def send_whatsapp_response(data: dict, end_user, sender_id):
     try:
         # Get app model
-        app_model = db.session.query(App).filter(App.id == UUID("2813cc15-8da8-4911-8a91-5178f4028f79")).first()
+        app_model = db.session.query(App).filter(App.id == "2813cc15-8da8-4911-8a91-5178f4028f79").first()
         response = CompletionService.completion(
             app_model=app_model,
             user=end_user,
@@ -24,9 +24,11 @@ def send_whatsapp_response(data: dict, end_user, sender_id):
         token = "EAAFJMpu0YYYBO4Hd5Amc2dHSCSqQfBHuZCBiQlMZA15mxl2ZAQ97FbuYseuZAUUe4RUrCKgy29kPE84ZCZBRkqltmZCF2Dc0XTFkUIzZAVC61XvdQDSx5VyabZBfKSCSpAYsylmtUq8LZC67CczI0ZAGoVs7Pa2iRsQlVC7BD8UOXTAkp2zNzDM5NP6HMzi8xZBqWngMikqIl0481ODHfQbnqxf1W6eLla66cuiI8wwZD"
         whatsapp_app = whatsapp_service(phone_number_id="159045903960749", bearer_token=token)
         response = compact_response(response)
+        logging.info(f"Compact response: {response}")
         response_data = response.json()
         # Assuming the API returns the message in a key called 'message' - adjust as needed
         message_text = response_data.get("answer", "No answer found.")
+        logging.info(f"Message for whatsapp: {message_text}")
         # Use the WhatsApp class to send the fetched message text
         whatsapp_response = whatsapp_app.send_text_message(to=sender_id, message=message_text)
         if whatsapp_response.status != 200:
