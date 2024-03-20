@@ -24,7 +24,7 @@ def send_whatsapp_response(data: dict, end_user, sender_id):
             streaming=False
         )
         token = "EAAFJMpu0YYYBOZCiClcC308HTdIiHhud6DyVAjPMOvDCz8md3ZBIwylV3Bd4qs62VeDiR1QZA9XxKBUfD4rk36lB8lk5BvDttXIKi8OJ4qXZAlph81PXZAG1bIMQrJzFBhYZCvNZCLMWcYIQIEukqWJhWZBZCXy2r6y7orq9chzxXde8KnZBZC5Q1ZB6Opt3XEEBsexGLn1VPl6DkdHLLe6cIhtWulTOFWqDYNfORrYZD"
-        whatsapp_app = whatsapp_service(phone_number_id="159045903960749", bearer_token=token)
+        whatsapp_app = whatsapp_service(phone_number_id="159045903960749", bearer_token=token, version='v18.0')
         response = compact_response(response)
         logging.info(f"Compact response: {response}")
         response_data = response.json
