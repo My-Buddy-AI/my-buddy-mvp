@@ -14,7 +14,7 @@ from models.model import App
 def send_whatsapp_response(data: dict, end_user, sender_id):
     try:
         # Get app model
-        app_model = db.session.query(App).filter(App.id == "2813cc15-8da8-4911-8a91-5178f4028f79").first()
+        app_model = db.session.query(App).filter(App.id == "533db53e-1763-48d3-91b0-d70690a20fa9").first()
         end_user = create_or_update_end_user_for_user_id(app_model, str(uuid4()))
         response = CompletionService.completion(
             app_model=app_model,
@@ -23,8 +23,8 @@ def send_whatsapp_response(data: dict, end_user, sender_id):
             invoke_from=InvokeFrom.WEB_APP,
             streaming=False
         )
-        token = "EAAuaw3HgfGwBO8lHi4S9pgkO6ObkC7XaHMLGe3OnDmJQmvllDbyXVhbcZCRpOEZAN2U0Ch8yYbofPNfPcI0jQohxw0T8uyqvIzZCT89YJEMPZCg6XJjc9CaJi2FuZCgK1VC0hV5tao4SlLnpdNfZC3MZB2kLMFM8qfGzJmnhNl6fYZBx2Hx2On42DWR6Pm2CiPJ4n5JY8frr6mlIsKUpKtSmDEMAeJrLTt15KQZDZD"
-        whatsapp_app = whatsapp_service(phone_number_id="280222135167594", bearer_token=token, version='v18.0')
+        token = "EAAFJMpu0YYYBO1fsPY2B6RJMT2Cy3oTZCUXvIE2fZB0RgnVfxCvzjYcbVqsewUMfdhVUw3Ta3BMUZBqKCSjrJhZBPv2ZBKRMdwzkEt1ld2GJcybZBhlZBPYbNSDJJj9mG1NVnL5UvfrT0r92ZAxtPg8msUr6aA3s1r7dlpfj6dsxETQENBvV3LZCZCSrgvwnvDdcCXbC6BPEafM7IRQeLz2acaJjjAcY1RuTnJ5BIZD"
+        whatsapp_app = whatsapp_service(phone_number_id="159045903960749", bearer_token=token, version='v18.0')
         response = compact_response(response)
         logging.info(f"Compact response: {response}")
         response_data = response.json
