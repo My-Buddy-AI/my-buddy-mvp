@@ -1,4 +1,5 @@
 from flask import Response, request, jsonify
+import logging
 from flask_login import current_user
 from flask_restful import Resource, reqparse
 from werkzeug.exceptions import Forbidden, InternalServerError, NotFound
@@ -23,6 +24,7 @@ class WhatasappWebhookApi(Resource):
 
     def post(self):
         body = request.json
+        loging.info(f"Wabhook message: {body}")
         if messages := body.get('entry', [{}])[0].get('changes', [{}])[0].get('value', {}).get('messages'):
             for message in messages:
                 if message.get('type') != 'text':
