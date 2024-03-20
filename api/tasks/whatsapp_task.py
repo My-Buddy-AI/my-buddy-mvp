@@ -23,8 +23,8 @@ def send_whatsapp_response(data: dict, end_user, sender_id):
             invoke_from=InvokeFrom.WEB_APP,
             streaming=False
         )
-        token = "EAAFJMpu0YYYBO6i8TvFxIEWqGIMIjL50JV76gpiyv3ushZBmSOgXt39aVy8fybAJChP4cVTGnZCQZAvhtFp27eLVaNz0ZCPHeB9sqFEQaywrO1zxqJLoYMwqWaGbk9s2g78IVndzHhVXseKTFtdDJc6kgdMBhuZBU7WrCCDBvq2xftAjZARuFnuxjwVMJZA9aMQOpJEKZCkB7puVDipGkfBLeI3lDrH388qttZAsZD"
-        whatsapp_app = whatsapp_service(phone_number_id="159045903960749", bearer_token=token, version='v18.0')
+        token = "EAAuaw3HgfGwBO8lHi4S9pgkO6ObkC7XaHMLGe3OnDmJQmvllDbyXVhbcZCRpOEZAN2U0Ch8yYbofPNfPcI0jQohxw0T8uyqvIzZCT89YJEMPZCg6XJjc9CaJi2FuZCgK1VC0hV5tao4SlLnpdNfZC3MZB2kLMFM8qfGzJmnhNl6fYZBx2Hx2On42DWR6Pm2CiPJ4n5JY8frr6mlIsKUpKtSmDEMAeJrLTt15KQZDZD"
+        whatsapp_app = whatsapp_service(phone_number_id="280222135167594", bearer_token=token, version='v18.0')
         response = compact_response(response)
         logging.info(f"Compact response: {response}")
         response_data = response.json
