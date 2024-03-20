@@ -33,7 +33,7 @@ def send_whatsapp_response(data: dict, end_user, sender_id):
         logging.info(f"Message for whatsapp: {message_text}")
         # Use the WhatsApp class to send the fetched message text
         whatsapp_response = whatsapp_app.send_text_message(to=sender_id, message=message_text)
-        if whatsapp_response.status != 200:
+        if whatsapp_response.status_code != 200:
             logging.error(f"[Whatsapp] Send message error. Status: {whatsapp_response.status}\nError detail: {whatsapp_response.text}")
         else:
             logging.info("[Whatsapp] Message sent successfully.")
