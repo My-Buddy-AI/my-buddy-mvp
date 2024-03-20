@@ -8,9 +8,9 @@ class WhatsAppService(WhatsApp):
         self.PHONE_NUMBER_ID = phone_number_id
     
     def __str__(self):
-        return f"WhatsApp {self.phone_number_id} {self.version}"
+        return f"WhatsApp {self.PHONE_NUMBER_ID} {self.VERSION}"
 
     def __repr__(self):
-        return f"WhatsApp {self.phone_number_id} {self.version}"
+        return f"WhatsApp {self.PHONE_NUMBER_ID} {self.VERSION}"
 
 whatsapp_service = WhatsAppService
