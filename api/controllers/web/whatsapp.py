@@ -24,7 +24,7 @@ class WhatasappWebhookApi(Resource):
 
     def post(self):
         body = request.json
-        loging.info(f"Wabhook message: {body}")
+        logging.info(f"Wabhook message: {body}")
         if messages := body.get('entry', [{}])[0].get('changes', [{}])[0].get('value', {}).get('messages'):
             for message in messages:
                 if message.get('type') != 'text':
