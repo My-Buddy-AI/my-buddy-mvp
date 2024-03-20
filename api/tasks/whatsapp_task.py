@@ -1,6 +1,7 @@
 import logging
 from uuid import UUID, uuid4
 
+from controllers.service_api.app import create_or_update_end_user_for_user_id
 from services.whatsapp_service import whatsapp_service
 from core.entities.application_entities import InvokeFrom
 from controllers.web.completion import compact_response, CompletionService
