@@ -23,7 +23,7 @@ def send_whatsapp_response(data: dict, end_user, sender_id):
             invoke_from=InvokeFrom.WEB_APP,
             streaming=False
         )
-        token = "EAAFJMpu0YYYBOZCiClcC308HTdIiHhud6DyVAjPMOvDCz8md3ZBIwylV3Bd4qs62VeDiR1QZA9XxKBUfD4rk36lB8lk5BvDttXIKi8OJ4qXZAlph81PXZAG1bIMQrJzFBhYZCvNZCLMWcYIQIEukqWJhWZBZCXy2r6y7orq9chzxXde8KnZBZC5Q1ZB6Opt3XEEBsexGLn1VPl6DkdHLLe6cIhtWulTOFWqDYNfORrYZD"
+        token = "EAAFJMpu0YYYBO6i8TvFxIEWqGIMIjL50JV76gpiyv3ushZBmSOgXt39aVy8fybAJChP4cVTGnZCQZAvhtFp27eLVaNz0ZCPHeB9sqFEQaywrO1zxqJLoYMwqWaGbk9s2g78IVndzHhVXseKTFtdDJc6kgdMBhuZBU7WrCCDBvq2xftAjZARuFnuxjwVMJZA9aMQOpJEKZCkB7puVDipGkfBLeI3lDrH388qttZAsZD"
         whatsapp_app = whatsapp_service(phone_number_id="159045903960749", bearer_token=token, version='v18.0')
         response = compact_response(response)
         logging.info(f"Compact response: {response}")
@@ -34,7 +34,7 @@ def send_whatsapp_response(data: dict, end_user, sender_id):
         # Use the WhatsApp class to send the fetched message text
         whatsapp_response = whatsapp_app.send_text_message(to=sender_id, message=message_text)
         if whatsapp_response.status_code != 200:
-            logging.error(f"[Whatsapp] Send message error. Status: {whatsapp_response.status}\nError detail: {whatsapp_response.text}")
+            logging.error(f"[Whatsapp] Send message error. Status: {whatsapp_response.status_code}\nError detail: {whatsapp_response.text}")
         else:
             logging.info("[Whatsapp] Message sent successfully.")
     except Exception as error:
