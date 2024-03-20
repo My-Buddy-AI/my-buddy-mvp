@@ -1,6 +1,7 @@
 import logging
-from uuid import UUID
+from uuid import UUID, uuid4
 
+from controllers.service_api.app import create_or_update_end_user_for_user_id
 from services.whatsapp_service import whatsapp_service
 from core.entities.application_entities import InvokeFrom
 from controllers.web.completion import compact_response, CompletionService
@@ -14,6 +15,7 @@ def send_whatsapp_response(data: dict, end_user, sender_id):
     try:
         # Get app model
         app_model = db.session.query(App).filter(App.id == "2813cc15-8da8-4911-8a91-5178f4028f79").first()
+        end_user = create_or_update_end_user_for_user_id(app_model, uuid4())
         response = CompletionService.completion(
             app_model=app_model,
             user=end_user,
