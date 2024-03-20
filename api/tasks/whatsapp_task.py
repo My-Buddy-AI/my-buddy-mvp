@@ -15,7 +15,7 @@ def send_whatsapp_response(data: dict, end_user, sender_id):
     try:
         # Get app model
         app_model = db.session.query(App).filter(App.id == "2813cc15-8da8-4911-8a91-5178f4028f79").first()
-        end_user = create_or_update_end_user_for_user_id(app_model, uuid4())
+        end_user = create_or_update_end_user_for_user_id(app_model, str(uuid4()))
         response = CompletionService.completion(
             app_model=app_model,
             user=end_user,
