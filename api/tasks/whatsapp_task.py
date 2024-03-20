@@ -27,7 +27,7 @@ def send_whatsapp_response(data: dict, end_user, sender_id):
         whatsapp_app = whatsapp_service(phone_number_id="159045903960749", bearer_token=token)
         response = compact_response(response)
         logging.info(f"Compact response: {response}")
-        response_data = response.json()
+        response_data = response.json
         # Assuming the API returns the message in a key called 'message' - adjust as needed
         message_text = response_data.get("answer", "No answer found.")
         logging.info(f"Message for whatsapp: {message_text}")
