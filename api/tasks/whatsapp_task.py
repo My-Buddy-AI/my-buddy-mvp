@@ -1,3 +1,4 @@
+import ast
 import logging
 from uuid import UUID, uuid4
 
@@ -21,21 +22,30 @@ def send_whatsapp_response(data: dict, end_user, sender_id):
             user=end_user,
             args=data,
             invoke_from=InvokeFrom.WEB_APP,
-            streaming=False
+            streaming=True
         )
         token = "EAAuaw3HgfGwBO8lHi4S9pgkO6ObkC7XaHMLGe3OnDmJQmvllDbyXVhbcZCRpOEZAN2U0Ch8yYbofPNfPcI0jQohxw0T8uyqvIzZCT89YJEMPZCg6XJjc9CaJi2FuZCgK1VC0hV5tao4SlLnpdNfZC3MZB2kLMFM8qfGzJmnhNl6fYZBx2Hx2On42DWR6Pm2CiPJ4n5JY8frr6mlIsKUpKtSmDEMAeJrLTt15KQZDZD"
         whatsapp_app = whatsapp_service(phone_number_id="280222135167594", bearer_token=token, version='v18.0')
         response = compact_response(response)
-        logging.info(f"Compact response: {response}")
-        response_data = response.json
-        # Assuming the API returns the message in a key called 'message' - adjust as needed
-        message_text = response_data.get("answer", "No answer found.")
-        logging.info(f"Message for whatsapp: {message_text}")
-        # Use the WhatsApp class to send the fetched message text
-        whatsapp_response = whatsapp_app.send_text_message(to=sender_id, message=message_text)
-        if whatsapp_response.status_code != 200:
-            logging.error(f"[Whatsapp] Send message error. Status: {whatsapp_response.status_code}\nError detail: {whatsapp_response.text}")
+        answer = ""
+        for x in response.response:
+            if len(answer) >= 1550:
+                logging.info(f"Message for whatsapp: {answer}")
+                # Use the WhatsApp class to send the fetched message text
+                whatsapp_response = whatsapp_app.send_text_message(to=sender_id, message=answer)
+                if whatsapp_response.status_code != 200:
+                    logging.error(f"[Whatsapp] Send message error. Status: {whatsapp_response.status_code}\nError detail: {whatsapp_response.text}")
+                else:
+                    logging.info("[Whatsapp] Message sent successfully.")
+                answer = ""
+            answer += f" {ast.literal_eval(x[6:]).get('answer', '')}"
         else:
-            logging.info("[Whatsapp] Message sent successfully.")
+            logging.info(f"Message for whatsapp: {answer}")
+            # Use the WhatsApp class to send the fetched message text
+            whatsapp_response = whatsapp_app.send_text_message(to=sender_id, message=answer)
+            if whatsapp_response.status_code != 200:
+                logging.error(f"[Whatsapp] Send message error. Status: {whatsapp_response.status_code}\nError detail: {whatsapp_response.text}")
+            else:
+                logging.info("[Whatsapp] Message sent successfully.")
     except Exception as error:
         logging.error(f"[Whatsapp] Send message error: {error}")
